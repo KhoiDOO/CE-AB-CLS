@@ -22,9 +22,9 @@ deep-forest==0.1.5
 scikit-learn==1.1.2
 numpy==1.19.5
 tensorflow==2.7.0
-torch==1.12.1
-torchaudio==0.12.1
-torchvision==0.13.1
+torch==1.12.1 or 1.12.1+cu116
+torchaudio==0.12.1 or 0.12.1+cu116
+torchvision==0.13.1 or 0.13.1+cu116
 jupyter
 opencv-python==4.6.0.66
 streamlit==1.12.2
@@ -39,4 +39,9 @@ cd "Envir\Scripts"
 activate
 pip install -r requirements.txt
 ```
+### Pytorch Installation
 
+```
+pip3 install torch torchvision torchaudio
+pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116
+```
