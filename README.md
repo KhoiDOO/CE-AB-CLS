@@ -9,7 +9,7 @@ git clone https://github.com/ScaleMind-C9308A/Stomach-Status-Classification.git
 ### Environment Information
 
 ```
-Python: 3.9.5
+Python==3.9.5
 wheel 
 pandas==1.4.4
 matplotlib==3.6.0
