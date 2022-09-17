@@ -160,9 +160,6 @@ class HarDMSEG(nn.Module):
         return lateral_map_5 #, lateral_map_4, lateral_map_3, lateral_map_2
 
 if __name__ == '__main__':
-    # ras = HarDMSEG().cuda()
-    # input_tensor = torch.randn(1, 3, 352, 352).cuda()
-
     model = HarDMSEG()
     input_tensor = torch.randn(1, 3, 352, 352)
     out = model(input_tensor)
