@@ -1,5 +1,9 @@
 # ChromoEndoscopy IMG Research
 
+Solarized dark             |  Solarized Ocean
+:-------------------------:|:-------------------------:
+![](https://github.com/ScaleMind-C9308A/Stomach-Status-Classification/blob/main/Data%20set/Original%20Form/Train/Group%201%20-%20Normal/CHGastro_Normal_001.png)  |  ![](https://github.com/ScaleMind-C9308A/Stomach-Status-Classification/blob/main/Data%20set/Original%20Form/Train/Group%202%20-%20Abnormal/CHGastro_Abnormal_013.png)
+
 ### Git repo cloning
 
 ```
