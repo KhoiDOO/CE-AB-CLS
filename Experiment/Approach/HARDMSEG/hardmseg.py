@@ -140,7 +140,6 @@ class HarDMSEG(nn.Module):
         self.hardnet = hardnet(arch=68, pretrained = False)
         
     def forward(self, x):
-        #print("input",x.size())
         
         hardnetout = self.hardnet(x)
         
@@ -160,7 +159,7 @@ class HarDMSEG(nn.Module):
         return lateral_map_5 #, lateral_map_4, lateral_map_3, lateral_map_2
 
 if __name__ == '__main__':
-    model = HarDMSEG()
-    input_tensor = torch.randn(1, 3, 352, 352)
+    model = HarDMSEG().cuda()
+    input_tensor = torch.randn(1, 3, 352, 352).cuda()
     out = model(input_tensor)
     print(out)

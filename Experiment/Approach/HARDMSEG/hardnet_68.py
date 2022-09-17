@@ -3,7 +3,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-# +
+hardnet68path = ''
+hardnet85path = ''
+
 class Flatten(nn.Module):
     def __init__(self):
         super().__init__()
@@ -14,17 +16,13 @@ class ConvLayer(nn.Sequential):
     def __init__(self, in_channels, out_channels, kernel=3, stride=1, dropout=0.1, bias=False):
         super().__init__()
         out_ch = out_channels
-        groups = 1
-        #print(kernel, 'x', kernel, 'x', in_channels, 'x', out_channels)
+        groups = 1    
         self.add_module('conv', nn.Conv2d(in_channels, out_ch, kernel_size=kernel,          
                                           stride=stride, padding=kernel//2, groups=groups, bias=bias))
         self.add_module('norm', nn.BatchNorm2d(out_ch))
         self.add_module('relu', nn.ReLU6(True))                                          
     def forward(self, x):
         return super().forward(x)
-
-
-# -
 
 class HarDBlock(nn.Module):
     def get_link(self, layer, base_ch, growth_rate, grmul):
@@ -66,7 +64,6 @@ class HarDBlock(nn.Module):
           
           if (i % 2 == 0) or (i == n_layers - 1):
             self.out_channels += outch
-        #print("Blk out =",self.out_channels)
         self.layers = nn.ModuleList(layers_)
         
     def forward(self, x):
@@ -93,10 +90,6 @@ class HarDBlock(nn.Module):
         out = torch.cat(out_, 1)
         return out
 
-        
-
-
-# +
 class HarDNet(nn.Module):
     def __init__(self, depth_wise=False, arch=85, pretrained=True, weight_path=''):
         super().__init__()
@@ -180,8 +173,6 @@ class HarDNet(nn.Module):
                 
     def forward(self, x):
         out_branch =[]
-        #for layer in self.base:
-        #    x = layer(x)
             
         for i in range(len(self.base)-1):
             x = self.base[i](x)
@@ -189,9 +180,6 @@ class HarDNet(nn.Module):
                 out_branch.append(x)
 
         out = x
-        
-        #for i in range(4):
-        #    print(out_branch[i].size())
             
         return out_branch
     
@@ -200,14 +188,14 @@ def hardnet(arch=68,pretrained=True, **kwargs):
         print("68 LOADED")
         model = HarDNet(arch=68)
         if pretrained:
-            weights = torch.load('/home/james128333/PraNet/lib/hardnet68.pth')
+            weights = torch.load(hardnet68path)
             model.load_state_dict(weights)
-            print("68 LOADED READY")
-    #elif arch == 85:
-    #    print("85 LOADED")
-    #    model = HarDNet(arch=85)
-    #    if pretrained:
-    #        print("HAAAHAAA")
-    #        weights = torch.load('/home/james128333/HarDNet-MSEG/lib/hardnet85.pth')
-    #        model.load_state_dict(weights)
+            print("68 PRETRAINED LOADED READY")
+    elif arch == 85:
+       print("85 LOADED")
+       model = HarDNet(arch=85)
+       if pretrained:
+           print("85 PRETRAINED LOADED READY")
+           weights = torch.load(hardnet85path)
+           model.load_state_dict(weights)
     return model
