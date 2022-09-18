@@ -40,8 +40,11 @@ activate
 pip install -r requirements.txt
 ```
 ### Pytorch Installation
-
+#### CPU
 ```
 pip3 install torch torchvision torchaudio
+```
+#### GPU, CUDA
+```
 pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116
 ```
