@@ -85,8 +85,7 @@ class aggregation(nn.Module):
     def forward(self, x1, x2, x3):
         x1_1 = x1
         x2_1 = self.conv_upsample1(self.upsample(x1)) * x2
-        x3_1 = self.conv_upsample2(self.upsample(self.upsample(x1))) \
-               * self.conv_upsample3(self.upsample(x2)) * x3
+        x3_1 = self.conv_upsample2(self.upsample(self.upsample(x1))) * self.conv_upsample3(self.upsample(x2)) * x3
 
         x2_2 = torch.cat((x2_1, self.conv_upsample4(self.upsample(x1_1))), 1)
         x2_2 = self.conv_concat2(x2_2)
@@ -160,6 +159,9 @@ class HarDMSEG(nn.Module):
 
 if __name__ == '__main__':
     model = HarDMSEG().cuda()
-    input_tensor = torch.randn(1, 3, 352, 352).cuda()
+    factor = 1
+    input_tensor = torch.randn(1, 3, int(352*factor), int(352*factor)).cuda()
     out = model(input_tensor)
     print(out)
+    print(type(out))
+    print("Shape: {}".format(out.cpu().detach().numpy().shape))
