@@ -7,11 +7,21 @@ import numpy as np
 import random
 import torch
 import matplotlib.pyplot as plt
-import cv2
 
 
 class SegDataset(data.Dataset):
     def __init__(self, image_files: list, mask_files: list, trainsize, augmentations, subset = 'training'):
+        """__init__ Constructor of SegDataset class
+
+        Arguments:
+            image_files (list) -- list of image files path
+            mask_files (list) -- list of mask files path
+            trainsize (int)  -- size of images for training
+            augmentations (bool) -- specify whether augmentations should be used
+
+        Keyword Arguments:
+            subset (str) -- type of data set (default: {'training'})
+        """
         self.trainsize = trainsize
         self.subset = subset
         self.augmentations = augmentations
@@ -106,6 +116,24 @@ class SegDataset(data.Dataset):
 
 
 def get_loader(image_files, mask_files, batchsize, trainsize, shuffle=True, num_workers=1, pin_memory=True, augmentation=False, subset = 'training'):
+    """get_loader Create DataLoader for training and testing
+
+    Arguments:
+        image_files (list) -- list of image files path 
+        mask_files (list) -- list of mask files path
+        batchsize (int) -- batchsize of training
+        trainsize (int) -- size of image 
+
+    Keyword Arguments:
+        shuffle (bool) -- specify whether data will be shuffled or not (default: {True})
+        num_workers (int) -- number of core in the processor take part in processing data (default: {1})
+        pin_memory (bool) -- specify whether data will be from page locked memory (default: {True})
+        augmentation (bool) -- specify whether data will be augmented or not (default: {False})
+        subset (str) -- type of subset (default: {'training'})
+
+    Returns:
+        DataLoader (pytorch.ultils.data.DataLoader)
+    """    """"""
     dataset = SegDataset(image_files, mask_files, trainsize, augmentation, subset = subset)
     data_loader = data.DataLoader(dataset=dataset,
                                   batch_size=batchsize,

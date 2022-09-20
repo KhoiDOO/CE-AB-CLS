@@ -3,6 +3,15 @@ import torch.nn.functional as F
 import numpy as np
 
 def structureloss(pred, mask):
+	"""structureloss _summary_
+
+	Arguments:
+		pred -- Output tensor of shape (1, 1, width, height) representing the output of model
+		mask -- Output tensor of shape (1, 1, width, height) representing the expected output of model
+
+	Returns:
+		Loss between prediction and mask
+	"""
 	weit = 1 + 5*torch.abs(F.avg_pool2d(mask, kernel_size=31, stride=1, padding=15) - mask)
 	wbce = F.binary_cross_entropy_with_logits(pred, mask, reduce='none')
 	wbce = (weit*wbce).sum(dim=(2, 3)) / weit.sum(dim=(2, 3))
