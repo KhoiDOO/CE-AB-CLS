@@ -37,6 +37,8 @@ cd "directory\to\current\github\repo"
 python make_environment.py
 cd "Envir\Scripts"
 activate
+cd..
+cd..
 pip install -r requirements.txt
 ```
 ### Pytorch Installation
