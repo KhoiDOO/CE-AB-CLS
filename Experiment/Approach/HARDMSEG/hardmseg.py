@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from hardnet_68 import hardnet
+from Experiment.Approach.HARDMSEG.hardnet_68 import hardnet
 
 
 class BasicConv2d(nn.Module):
@@ -157,11 +157,12 @@ class HarDMSEG(nn.Module):
 
         return lateral_map_5 #, lateral_map_4, lateral_map_3, lateral_map_2
 
-if __name__ == '__main__':
-    model = HarDMSEG().cuda()
-    factor = 1
-    input_tensor = torch.randn(1, 3, int(352*factor), int(352*factor)).cuda()
-    out = model(input_tensor)
-    print(out)
-    print(type(out))
-    print("Shape: {}".format(out.cpu().detach().numpy().shape))
+# if __name__ == '__main__':
+#     model = HarDMSEG().cuda()
+#     factor = 1
+#     input_tensor = torch.randn(1, 3, int(352*factor), int(352*factor)).cuda()
+#     with torch.no_grad():
+#         out = model(input_tensor)
+#     print(out)
+#     print(type(out))
+#     print("Shape: {}".format(out.cpu().detach().numpy().shape))
