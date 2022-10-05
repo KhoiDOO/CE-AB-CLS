@@ -31,12 +31,11 @@ def sift_extract(data_file_path = None, _nfeatures = 300, _nOctaveLayers = 3, _c
         for x in data_file_path:
             split = x.split("\\")
             if "ROI" not in split[-1].split(".")[0].split("_"):
+                print(split[-1])
                 img = cv2.imread(x)
                 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
                 kp, des = sift.detectAndCompute(gray, None)
-                main_dict[split[3]] = {
-                    split[-1] : des.tolist()
-                }
+                main_dict[split[3]].append({split[-1] : des.tolist()})
         out_file = open(path, "w")
         json.dump(main_dict, out_file, indent = 6)
         out_file.close()
@@ -44,6 +43,7 @@ def sift_extract(data_file_path = None, _nfeatures = 300, _nOctaveLayers = 3, _c
 
 def test(img_paths):
     sum = 0
+    max = 0
     for x in img_paths:
         split = x.split("\\")
         if "ROI" not in split[-1].split(".")[0].split("_"):
@@ -51,14 +51,13 @@ def test(img_paths):
             gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
             sift = cv2.SIFT_create()
             kp, des = sift.detectAndCompute(gray, None)
-            # print(kp[0])
-            # print(des)
-            # print(len(kp))
-            # print(len(des))
+            if len(kp) > max:
+                max = len(kp) 
             # print(len(des[0])) # 128
+            # print(type(kp)) # cv.KeyPoints
             # print(type(des)) # np.array
             sum += len(kp)
-    return sum/len(img_paths)
+    return (sum/len(img_paths), max)
 
 if __name__ == '__main__':
     print(os.getcwd())
@@ -90,7 +89,15 @@ if __name__ == '__main__':
     print("SIFT Json Train file: {}".format(opt.target_sift_json_train_file))
     print("SIFT Json Test file: {}".format(opt.target_sift_json_test_file))
 
-    # print(test(opt.ori_train_files[:100])) # 230
-    # print(test(opt.ori_train_files + opt.ori_test_files)) # 291
+    # print(test(opt.ori_train_files[:100])) # (201.29, 2257)
+    # print(test(opt.ori_train_files + opt.ori_test_files)) # (291.4488636363636, 2582)
+
     # sift_extract(data_file_path=opt.ori_train_files, target_path=opt.target_sift_json_train_file)
     # sift_extract(data_file_path=opt.ori_test_files, target_path=opt.target_sift_json_test_file)
+
+    sift_extract(data_file_path=opt.ori_train_files, 
+                target_path=opt.target_sift_json_train_file,
+                _nfeatures = 0)
+    sift_extract(data_file_path=opt.ori_test_files, 
+                target_path=opt.target_sift_json_test_file,
+                _nfeatures = 0)
