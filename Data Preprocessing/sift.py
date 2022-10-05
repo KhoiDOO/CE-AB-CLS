@@ -61,6 +61,7 @@ def test(img_paths):
 
 if __name__ == '__main__':
     print(os.getcwd())
+    os.chdir("..")
     main_data_dir = os.getcwd() + "/Data set"
     
     origin_data_dir = main_data_dir + "/Original Form"
