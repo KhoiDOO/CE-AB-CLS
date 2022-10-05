@@ -45,17 +45,19 @@ def sift_extract(data_file_path = None, _nfeatures = 300, _nOctaveLayers = 3, _c
 def test(img_paths):
     sum = 0
     for x in img_paths:
-        img = cv2.imread(x)
-        gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-        sift = cv2.SIFT_create()
-        kp, des = sift.detectAndCompute(gray, None)
-        # print(kp[0])
-        # print(des)
-        # print(len(kp))
-        # print(len(des))
-        # print(len(des[0])) # 128
-        # print(type(des)) # np.array
-        sum += len(kp)
+        split = x.split("\\")
+        if "ROI" not in split[-1].split(".")[0].split("_"):
+            img = cv2.imread(x)
+            gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+            sift = cv2.SIFT_create()
+            kp, des = sift.detectAndCompute(gray, None)
+            # print(kp[0])
+            # print(des)
+            # print(len(kp))
+            # print(len(des))
+            # print(len(des[0])) # 128
+            # print(type(des)) # np.array
+            sum += len(kp)
     return sum/len(img_paths)
 
 if __name__ == '__main__':
@@ -89,5 +91,6 @@ if __name__ == '__main__':
     print("SIFT Json Test file: {}".format(opt.target_sift_json_test_file))
 
     # print(test(opt.ori_train_files[:100])) # 230
-    sift_extract(data_file_path=opt.ori_train_files, target_path=opt.target_sift_json_train_file)
-    sift_extract(data_file_path=opt.ori_test_files, target_path=opt.target_sift_json_test_file)
+    # print(test(opt.ori_train_files + opt.ori_test_files)) # 291
+    # sift_extract(data_file_path=opt.ori_train_files, target_path=opt.target_sift_json_train_file)
+    # sift_extract(data_file_path=opt.ori_test_files, target_path=opt.target_sift_json_test_file)
