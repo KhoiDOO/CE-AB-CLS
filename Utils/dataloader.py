@@ -143,28 +143,28 @@ def get_loader(image_files, mask_files, batchsize, trainsize, shuffle=True, num_
     return data_loader
 
 
-if __name__ == '__main__':
-    main_data_dir = os.getcwd() + "/Data set"
-    seg_data_dir = main_data_dir + "/Seg_Task_Data"
+# if __name__ == '__main__':
+#     main_data_dir = os.getcwd() + "/Data set"
+#     seg_data_dir = main_data_dir + "/Seg_Task_Data"
 
-    train_seg_data_dir = seg_data_dir + "/Train"
-    train_seg_img_dir = train_seg_data_dir + "/Img"
-    train_seg_img_files = glob.glob(train_seg_img_dir + "/*")
-    train_seg_mask_dir = train_seg_data_dir + "/Mask"
-    train_seg_mask_files = glob.glob(train_seg_mask_dir + "/*")
+#     train_seg_data_dir = seg_data_dir + "/Train"
+#     train_seg_img_dir = train_seg_data_dir + "/Img"
+#     train_seg_img_files = glob.glob(train_seg_img_dir + "/*")
+#     train_seg_mask_dir = train_seg_data_dir + "/Mask"
+#     train_seg_mask_files = glob.glob(train_seg_mask_dir + "/*")
 
-    test_seg_data_dir = seg_data_dir + "/Test"
-    test_seg_img_dir = test_seg_data_dir + "/Img"
-    test_seg_img_files = glob.glob(test_seg_img_dir + "/*")
-    test_seg_mask_dir = test_seg_data_dir + "/Mask"
-    test_seg_mask_files = glob.glob(test_seg_mask_dir + "/*")
+#     test_seg_data_dir = seg_data_dir + "/Test"
+#     test_seg_img_dir = test_seg_data_dir + "/Img"
+#     test_seg_img_files = glob.glob(test_seg_img_dir + "/*")
+#     test_seg_mask_dir = test_seg_data_dir + "/Mask"
+#     test_seg_mask_files = glob.glob(test_seg_mask_dir + "/*")
 
-    train_loader = get_loader(image_files=train_seg_img_files, mask_files=train_seg_mask_files, batchsize=32, trainsize=300)
-    train_features, train_labels = next(iter(train_loader))
-    img = train_features[0]
-    img = torch.permute(img, (2, 1, 0))
-    plt.subplot(1, 2, 1)
-    plt.imshow((img.numpy()).astype(np.uint8))
-    plt.subplot(1, 2, 2)
-    plt.imshow(torch.permute(train_labels[0], (2, 1, 0)).numpy().astype(np.uint8))
-    plt.show()
+#     train_loader = get_loader(image_files=train_seg_img_files, mask_files=train_seg_mask_files, batchsize=32, trainsize=300)
+#     train_features, train_labels = next(iter(train_loader))
+#     img = train_features[0]
+#     img = torch.permute(img, (2, 1, 0))
+#     plt.subplot(1, 2, 1)
+#     plt.imshow((img.numpy()).astype(np.uint8))
+#     plt.subplot(1, 2, 2)
+#     plt.imshow(torch.permute(train_labels[0], (2, 1, 0)).numpy().astype(np.uint8))
+#     plt.show()
