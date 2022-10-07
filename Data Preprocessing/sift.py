@@ -153,13 +153,13 @@ if __name__ == '__main__':
     # scale_match_flann = cv2.drawMatchesKnn(gray,kp,gray_resized,gray_resized_kp,matches,None,**draw_params)
     # cv2.imwrite('Data Preprocessing/scaledmatch_sift_flann.jpg',scale_match_flann)
 
-    (h, w) = img.shape[:2]
-    (cX, cY) = (w // 2, h // 2)
+    # (h, w) = img.shape[:2]
+    # (cX, cY) = (w // 2, h // 2)
     
-    M = cv2.getRotationMatrix2D((cX, cY), -160, 1.0)
-    rotated = cv2.warpAffine(img, M, (w, h))
-    rotated_gray = cv2.cvtColor(rotated,cv2.COLOR_BGR2GRAY)
-    gray_rotate_kp, gray_rotate_des = sift.detectAndCompute(rotated_gray,None)
+    # M = cv2.getRotationMatrix2D((cX, cY), -160, 1.0)
+    # rotated = cv2.warpAffine(img, M, (w, h))
+    # rotated_gray = cv2.cvtColor(rotated,cv2.COLOR_BGR2GRAY)
+    # gray_rotate_kp, gray_rotate_des = sift.detectAndCompute(rotated_gray,None)
     # matches = bf.knnMatch(des,gray_rotate_des,k=2)
 
     # good = []
@@ -169,16 +169,16 @@ if __name__ == '__main__':
     # rotate_match = cv2.drawMatchesKnn(gray,kp,rotated_gray,gray_rotate_kp,good,None,flags=cv2.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
     # cv2.imwrite('Data Preprocessing/rotatematch_sift.jpg',rotate_match)
 
-    matches = flann.knnMatch(des,gray_rotate_des,k=2)
+    # matches = flann.knnMatch(des,gray_rotate_des,k=2)
 
-    matchesMask = [[0,0] for i in range(len(matches))]
+    # matchesMask = [[0,0] for i in range(len(matches))]
 
-    for i,(m,n) in enumerate(matches):
-        if m.distance < 0.7*n.distance:
-            matchesMask[i]=[1,0]
-    draw_params = dict(matchColor = (0,255,0),
-                   singlePointColor = (255,0,0),
-                   matchesMask = matchesMask,
-                   flags = cv2.DrawMatchesFlags_DEFAULT)
-    rotatematch_flann = cv2.drawMatchesKnn(gray,kp,rotated_gray,gray_rotate_kp,matches,None,**draw_params)
-    cv2.imwrite('Data Preprocessing/rotatematch_sift_flann.jpg',rotatematch_flann)
+    # for i,(m,n) in enumerate(matches):
+    #     if m.distance < 0.7*n.distance:
+    #         matchesMask[i]=[1,0]
+    # draw_params = dict(matchColor = (0,255,0),
+    #                singlePointColor = (255,0,0),
+    #                matchesMask = matchesMask,
+    #                flags = cv2.DrawMatchesFlags_DEFAULT)
+    # rotatematch_flann = cv2.drawMatchesKnn(gray,kp,rotated_gray,gray_rotate_kp,matches,None,**draw_params)
+    # cv2.imwrite('Data Preprocessing/rotatematch_sift_flann.jpg',rotatematch_flann)
