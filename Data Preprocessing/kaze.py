@@ -31,7 +31,8 @@ def kaze_extract(data_file_path = None, extended = True, upright = False, thresh
                                 nOctaveLayers = nOctaveLayers)
         for x in data_file_path:
             split = x.split("\\")
-            if "ROI" not in split[-1].split(".")[0].split("_"):
+            split_check = split[-1].split(".")[0].split("_")
+            if "ROI" not in split_check and "018" not in split_check:
                 print(split[-1])
                 img = cv2.imread(x)
                 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -50,8 +51,9 @@ def test(img_paths):
         if "ROI" not in split[-1].split(".")[0].split("_"):
             img = cv2.imread(x)
             gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-            kaze = cv2.KAZE_create()
+            kaze = cv2.KAZE_create(nOctaves = 10)
             kp, des = kaze.detectAndCompute(gray, None)
+            print(split, kp, des)
             if len(kp) > max:
                 max = len(kp) 
             # print(len(des[0])) # 128
@@ -92,7 +94,8 @@ if __name__ == '__main__':
     print("KAZE Json Test file: {}".format(opt.target_kaze_json_test_file))
 
     # print(test(opt.ori_train_files[:100])) # (201.29, 2257)
-    print(test(opt.ori_train_files + opt.ori_test_files)) # (291.4488636363636, 2582)
+    # print(test(opt.ori_train_files + opt.ori_test_files)) # (137.4488636363636, 2582)
+    # print(test([opt.ori_train_files[12]]))
 
     kaze_extract(data_file_path=opt.ori_train_files, target_path=opt.target_kaze_json_train_file)
     kaze_extract(data_file_path=opt.ori_test_files, target_path=opt.target_kaze_json_test_file)
