@@ -97,5 +97,63 @@ if __name__ == '__main__':
     # print(test(opt.ori_train_files + opt.ori_test_files)) # (137.4488636363636, 2582)
     # print(test([opt.ori_train_files[12]]))
 
-    kaze_extract(data_file_path=opt.ori_train_files, target_path=opt.target_kaze_json_train_file)
-    kaze_extract(data_file_path=opt.ori_test_files, target_path=opt.target_kaze_json_test_file)
+    # kaze_extract(data_file_path=opt.ori_train_files, target_path=opt.target_kaze_json_train_file)
+    # kaze_extract(data_file_path=opt.ori_test_files, target_path=opt.target_kaze_json_test_file)
+
+    img = cv2.imread(opt.ori_train_files[100])
+    gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    kaze = cv2.KAZE_create()
+    kp, des = kaze.detectAndCompute(gray,None)
+    img_keys=cv2.drawKeypoints(gray,kp,img,flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+    cv2.imwrite('Data Preprocessing/kaze_invariant_check/kaze_keypoints.jpg',img_keys)
+
+    scale_percent = 60 
+    width = int(img.shape[1] * scale_percent / 100)
+    height = int(img.shape[0] * scale_percent / 100)
+    dim = (width, height)
+  
+    resized = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
+    gray_resized = cv2.cvtColor(resized,cv2.COLOR_BGR2GRAY)
+    gray_resized_kp, gray_resized_des = kaze.detectAndCompute(gray_resized,None)
+    resized_img_keys = cv2.drawKeypoints(gray_resized,gray_resized_kp,resized,flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+    cv2.imwrite('Data Preprocessing/kaze_invariant_check/resized_kaze_keypoints.jpg',resized_img_keys)
+
+    bf = cv2.BFMatcher()
+    matches = bf.knnMatch(des,gray_resized_des,k=2)
+
+    good = []
+    for m,n in matches:
+        if m.distance < 0.75*n.distance:
+            good.append([m])
+    scaled_match = cv2.drawMatchesKnn(gray,kp,gray_resized,gray_resized_kp,good,None,flags=cv2.DrawMatchesFlags_DEFAULT)
+    cv2.imwrite('Data Preprocessing/kaze_invariant_check/scaledmatch_kaze.jpg',scaled_match)
+
+    (h, w) = img.shape[:2]
+    (cX, cY) = (w // 2, h // 2)
+    
+    M = cv2.getRotationMatrix2D((cX, cY), -160, 1.0)
+    rotated = cv2.warpAffine(img, M, (w, h))
+    rotated_gray = cv2.cvtColor(rotated,cv2.COLOR_BGR2GRAY)
+    gray_rotate_kp, gray_rotate_des = kaze.detectAndCompute(rotated_gray,None)
+    matches = bf.knnMatch(des,gray_rotate_des,k=2)
+
+    good = []
+    for m,n in matches:
+        if m.distance < 0.75*n.distance:
+            good.append([m])
+    rotate_match = cv2.drawMatchesKnn(gray,kp,rotated_gray,gray_rotate_kp,good,None,flags=cv2.DrawMatchesFlags_DEFAULT)
+    cv2.imwrite('Data Preprocessing/kaze_invariant_check/rotatematch_kaze.jpg',rotate_match)
+
+    gray_cropped_image = gray[50:320, 110:370]
+    # cv2.imshow("cropped", cropped_image)
+    # cv2.waitKey(0)
+    crop_kp, crop_des = kaze.detectAndCompute(gray_cropped_image, None)
+
+    matches = bf.knnMatch(des,crop_des,k=2)
+
+    good = []
+    for m,n in matches:
+        if m.distance < 0.75*n.distance:
+            good.append([m])
+    cropped_match = cv2.drawMatchesKnn(gray,kp,gray_cropped_image,crop_kp,good,None,flags=cv2.DrawMatchesFlags_DEFAULT)
+    cv2.imwrite('Data Preprocessing/kaze_invariant_check/croppedmatch_kaze.jpg',cropped_match)
