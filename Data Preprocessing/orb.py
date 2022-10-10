@@ -112,17 +112,17 @@ if __name__ == '__main__':
     #             target_path=opt.target_sift_json_test_file,
     #             nfeatures = 1000)
 
-    # orb_extract(data_file_path=opt.ori_train_files, 
-    #             target_path=opt.target_sift_json_train_file,
-    #             nfeatures = 10000)
-    # orb_extract(data_file_path=opt.ori_test_files, 
-    #             target_path=opt.target_sift_json_test_file,
-    #             nfeatures = 10000)
+    orb_extract(data_file_path=opt.ori_train_files, 
+                target_path=opt.target_sift_json_train_file,
+                nfeatures = 10000, scaleFactor = 2)
+    orb_extract(data_file_path=opt.ori_test_files, 
+                target_path=opt.target_sift_json_test_file,
+                nfeatures = 10000, scaleFactor = 2)
     
-    img = cv2.imread(opt.ori_train_files[100])
-    gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-    orb = cv2.ORB_create(nfeatures = 10000, scaleFactor=2)
-    kp, des = orb.detectAndCompute(gray,None)
+    # img = cv2.imread(opt.ori_train_files[100])
+    # gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    # orb = cv2.ORB_create(nfeatures = 10000, scaleFactor=2)
+    # kp, des = orb.detectAndCompute(gray,None)
 
     # scale_percent = 60 
     # width = int(img.shape[1] * scale_percent / 100)
@@ -135,7 +135,7 @@ if __name__ == '__main__':
     # resized_img_keys = cv2.drawKeypoints(gray_resized,gray_resized_kp,resized,flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
     # cv2.imwrite('Data Preprocessing/orb_invariant_check/resized_orb_keypoints.jpg',resized_img_keys)
 
-    bf = cv2.BFMatcher()
+    # bf = cv2.BFMatcher()
     # matches = bf.knnMatch(des,gray_resized_des,k=2)
 
     # good = []
@@ -182,16 +182,16 @@ if __name__ == '__main__':
     # rotate_match = cv2.drawMatchesKnn(gray,kp,rotated_gray,gray_rotate_kp,good,None,flags=cv2.DrawMatchesFlags_DEFAULT)
     # cv2.imwrite('Data Preprocessing/orb_invariant_check/rotatematch_orb.jpg',rotate_match)
 
-    gray_cropped_image = gray[50:320, 110:370]
+    # gray_cropped_image = gray[50:320, 110:370]
     # cv2.imshow("cropped", cropped_image)
     # cv2.waitKey(0)
-    crop_kp, crop_des = orb.detectAndCompute(gray_cropped_image, None)
+    # crop_kp, crop_des = orb.detectAndCompute(gray_cropped_image, None)
 
-    matches = bf.knnMatch(des,crop_des,k=2)
+    # matches = bf.knnMatch(des,crop_des,k=2)
 
-    good = []
-    for m,n in matches:
-        if m.distance < 0.75*n.distance:
-            good.append([m])
-    cropped_match = cv2.drawMatchesKnn(gray,kp,gray_cropped_image,crop_kp,good,None,flags=cv2.DrawMatchesFlags_DEFAULT)
-    cv2.imwrite('Data Preprocessing/orb_invariant_check/croppedmatch_orb.jpg',cropped_match)
+    # good = []
+    # for m,n in matches:
+    #     if m.distance < 0.75*n.distance:
+    #         good.append([m])
+    # cropped_match = cv2.drawMatchesKnn(gray,kp,gray_cropped_image,crop_kp,good,None,flags=cv2.DrawMatchesFlags_DEFAULT)
+    # cv2.imwrite('Data Preprocessing/orb_invariant_check/croppedmatch_orb.jpg',cropped_match)
