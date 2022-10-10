@@ -182,3 +182,18 @@ if __name__ == '__main__':
     #                flags = cv2.DrawMatchesFlags_DEFAULT)
     # rotatematch_flann = cv2.drawMatchesKnn(gray,kp,rotated_gray,gray_rotate_kp,matches,None,**draw_params)
     # cv2.imwrite('Data Preprocessing/rotatematch_sift_flann.jpg',rotatematch_flann)
+
+    gray_cropped_image = gray[50:320, 110:370]
+    # cv2.imshow("cropped", cropped_image)
+    # cv2.waitKey(0)
+    crop_kp, crop_des = sift.detectAndCompute(gray_cropped_image, None)
+
+    matches = bf.knnMatch(des,crop_des,k=2)
+
+    good = []
+    for m,n in matches:
+        if m.distance < 0.75*n.distance:
+            good.append([m])
+    cropped_match = cv2.drawMatchesKnn(gray,kp,gray_cropped_image,crop_kp,good,None,flags=cv2.DrawMatchesFlags_DEFAULT)
+    cv2.imwrite('Data Preprocessing/sift_invariant_check/croppedmatch_sift.jpg',cropped_match)
+
