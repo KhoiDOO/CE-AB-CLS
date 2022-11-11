@@ -14,24 +14,25 @@ sift_data = main_data_dir + "\\sift"
 akaze_data = main_data_dir + "\\akaze"
 kaze_data = main_data_dir + "\\kaze"
 orb_data = main_data_dir + "\\orb"
+surf_data = main_data_dir + "\\surf"
 
 # print(sift_data)
 # print(akaze_data)
 # print(kaze_data)
 # print(orb_data)
 
-sift_data_train = [i for i in glob.glob(sift_data + '\\*') if 'train' in i]
-sift_data_test = [i for i in glob.glob(sift_data + '\\*') if 'test' in i]
+data_train = [i for i in glob.glob(sift_data + '\\*') if 'train' in i]
+data_test = [i for i in glob.glob(sift_data + '\\*') if 'test' in i]
 
 # print(sift_data_train)
 # print(sift_data_test)
 
 def load_json(path):
     f = open(path)
-    return  json.load(f)
+    return json.load(f)
 
-sift_train_json = load_json(sift_data_train[0])
-sift_test_json = load_json(sift_data_test[0])
+train_json = load_json(data_train[0])
+test_json = load_json(data_test[0])
 
 
 def create_kmean_dataset(json_data, path = None):
@@ -67,5 +68,5 @@ def create_kmean_dataset(json_data, path = None):
 
 
 
-save_path = main_data_dir + "\\kmean_dataset\\" + sift_data_train[0].split("\\")[-1].replace("json", "csv")
-create_kmean_dataset(sift_train_json, save_path)
+save_path = main_data_dir + "\\kmean_dataset\\" + train_json[0].split("\\")[-1].replace("json", "csv")
+create_kmean_dataset(train_json, save_path)
