@@ -70,8 +70,8 @@ if __name__ == '__main__':
     train_origin_data_files = glob.glob(train_origin_data_dir + "/*/*")
     test_origin_data_files = glob.glob(test_origin_data_dir + "/*/*")
     
-    train_json_output = main_data_dir + "/sift_train{}.json"
-    test_json_output = main_data_dir + "/sift_test{}.json"
+    train_json_output = main_data_dir + "/sift/sift_train{}.json"
+    test_json_output = main_data_dir + "/sift/sift_test{}.json"
     
     parser = argparse.ArgumentParser()
     
@@ -93,8 +93,8 @@ if __name__ == '__main__':
     # print(test(opt.ori_train_files[:100])) # (201.29, 2257)
     # print(test(opt.ori_train_files + opt.ori_test_files)) # (291.4488636363636, 2582)
 
-    # sift_extract(data_file_path=opt.ori_train_files, target_path=opt.target_sift_json_train_file)
-    # sift_extract(data_file_path=opt.ori_test_files, target_path=opt.target_sift_json_test_file)
+    sift_extract(data_file_path=opt.ori_train_files, target_path=opt.target_sift_json_train_file)
+    sift_extract(data_file_path=opt.ori_test_files, target_path=opt.target_sift_json_test_file)
 
     # sift_extract(data_file_path=opt.ori_train_files, 
     #             target_path=opt.target_sift_json_train_file,

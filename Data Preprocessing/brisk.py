@@ -90,8 +90,8 @@ if __name__ == '__main__':
     # print(test(opt.ori_train_files[:100])) # (114.18, 2212)
     # print(test(opt.ori_train_files + opt.ori_test_files)) # (147.88, 2212)
 
-    # brisk_extract(data_file_path=opt.ori_train_files, target_path=opt.target_brisk_json_train_file)
-    # brisk_extract(data_file_path=opt.ori_test_files, target_path=opt.target_brisk_json_test_file)
+    brisk_extract(data_file_path=opt.ori_train_files, target_path=opt.target_brisk_json_train_file)
+    brisk_extract(data_file_path=opt.ori_test_files, target_path=opt.target_brisk_json_test_file)
 
     # img = cv2.imread(opt.ori_train_files[100])
     # gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)

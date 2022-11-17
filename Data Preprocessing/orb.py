@@ -79,8 +79,8 @@ if __name__ == '__main__':
     train_origin_data_files = glob.glob(train_origin_data_dir + "/*/*")
     test_origin_data_files = glob.glob(test_origin_data_dir + "/*/*")
     
-    train_json_output = main_data_dir + "/orb_train{}.json"
-    test_json_output = main_data_dir + "/orb_test{}.json"
+    train_json_output = main_data_dir + "/orb/orb_train{}.json"
+    test_json_output = main_data_dir + "/orb/orb_test{}.json"
     
     parser = argparse.ArgumentParser()
     

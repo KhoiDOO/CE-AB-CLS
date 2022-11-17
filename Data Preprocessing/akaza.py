@@ -72,8 +72,8 @@ if __name__ == '__main__':
     train_origin_data_files = glob.glob(train_origin_data_dir + "/*/*")
     test_origin_data_files = glob.glob(test_origin_data_dir + "/*/*")
     
-    train_json_output = main_data_dir + "/akaze_train{}.json"
-    test_json_output = main_data_dir + "/akaze_test{}.json"
+    train_json_output = main_data_dir + "/akaze/akaze_train{}.json"
+    test_json_output = main_data_dir + "/akaze/akaze_test{}.json"
     
     parser = argparse.ArgumentParser()
     
@@ -96,65 +96,65 @@ if __name__ == '__main__':
     # print(test(opt.ori_train_files + opt.ori_test_files)) # (110.4488636363636, 1247)
     # print(test([opt.ori_train_files[12]]))
 
-    # akaze_extract(data_file_path=opt.ori_train_files, target_path=opt.target_akaze_json_train_file)
-    # akaze_extract(data_file_path=opt.ori_test_files, target_path=opt.target_akaze_json_test_file)
+    akaze_extract(data_file_path=opt.ori_train_files, target_path=opt.target_akaze_json_train_file)
+    akaze_extract(data_file_path=opt.ori_test_files, target_path=opt.target_akaze_json_test_file)
 
-    img = cv2.imread(opt.ori_train_files[100])
-    # print(opt.ori_train_files[14])
-    gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-    akaze = cv2.AKAZE_create()
-    kp, des = akaze.detectAndCompute(gray,None)
-    # print(len(kp), len(des))
-    img_keys=cv2.drawKeypoints(gray,kp,img,flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
-    cv2.imwrite('Data Preprocessing/akaze_invariant_check/akaze_keypoints.jpg',img_keys)
+    # img = cv2.imread(opt.ori_train_files[100])
+    # # print(opt.ori_train_files[14])
+    # gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    # akaze = cv2.AKAZE_create()
+    # kp, des = akaze.detectAndCompute(gray,None)
+    # # print(len(kp), len(des))
+    # img_keys=cv2.drawKeypoints(gray,kp,img,flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+    # cv2.imwrite('Data Preprocessing/akaze_invariant_check/akaze_keypoints.jpg',img_keys)
 
-    scale_percent = 60 
-    width = int(img.shape[1] * scale_percent / 100)
-    height = int(img.shape[0] * scale_percent / 100)
-    dim = (width, height)
+    # scale_percent = 60 
+    # width = int(img.shape[1] * scale_percent / 100)
+    # height = int(img.shape[0] * scale_percent / 100)
+    # dim = (width, height)
   
-    resized = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
-    gray_resized = cv2.cvtColor(resized,cv2.COLOR_BGR2GRAY)
-    gray_resized_kp, gray_resized_des = akaze.detectAndCompute(gray_resized,None)
-    resized_img_keys = cv2.drawKeypoints(gray_resized,gray_resized_kp,resized,flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
-    cv2.imwrite('Data Preprocessing/akaze_invariant_check/resized_akaze_keypoints.jpg',resized_img_keys)
+    # resized = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
+    # gray_resized = cv2.cvtColor(resized,cv2.COLOR_BGR2GRAY)
+    # gray_resized_kp, gray_resized_des = akaze.detectAndCompute(gray_resized,None)
+    # resized_img_keys = cv2.drawKeypoints(gray_resized,gray_resized_kp,resized,flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+    # cv2.imwrite('Data Preprocessing/akaze_invariant_check/resized_akaze_keypoints.jpg',resized_img_keys)
 
-    bf = cv2.BFMatcher()
-    matches = bf.knnMatch(des,gray_resized_des,k=2)
+    # bf = cv2.BFMatcher()
+    # matches = bf.knnMatch(des,gray_resized_des,k=2)
 
-    good = []
-    for m,n in matches:
-        if m.distance < 0.75*n.distance:
-            good.append([m])
-    scaled_match = cv2.drawMatchesKnn(gray,kp,gray_resized,gray_resized_kp,good,None,flags=cv2.DrawMatchesFlags_DEFAULT)
-    cv2.imwrite('Data Preprocessing/akaze_invariant_check/scaledmatch_akaze.jpg',scaled_match)
+    # good = []
+    # for m,n in matches:
+    #     if m.distance < 0.75*n.distance:
+    #         good.append([m])
+    # scaled_match = cv2.drawMatchesKnn(gray,kp,gray_resized,gray_resized_kp,good,None,flags=cv2.DrawMatchesFlags_DEFAULT)
+    # cv2.imwrite('Data Preprocessing/akaze_invariant_check/scaledmatch_akaze.jpg',scaled_match)
 
-    (h, w) = img.shape[:2]
-    (cX, cY) = (w // 2, h // 2)
+    # (h, w) = img.shape[:2]
+    # (cX, cY) = (w // 2, h // 2)
     
-    M = cv2.getRotationMatrix2D((cX, cY), -160, 1.0)
-    rotated = cv2.warpAffine(img, M, (w, h))
-    rotated_gray = cv2.cvtColor(rotated,cv2.COLOR_BGR2GRAY)
-    gray_rotate_kp, gray_rotate_des = akaze.detectAndCompute(rotated_gray,None)
-    matches = bf.knnMatch(des,gray_rotate_des,k=2)
+    # M = cv2.getRotationMatrix2D((cX, cY), -160, 1.0)
+    # rotated = cv2.warpAffine(img, M, (w, h))
+    # rotated_gray = cv2.cvtColor(rotated,cv2.COLOR_BGR2GRAY)
+    # gray_rotate_kp, gray_rotate_des = akaze.detectAndCompute(rotated_gray,None)
+    # matches = bf.knnMatch(des,gray_rotate_des,k=2)
 
-    good = []
-    for m,n in matches:
-        if m.distance < 0.75*n.distance:
-            good.append([m])
-    rotate_match = cv2.drawMatchesKnn(gray,kp,rotated_gray,gray_rotate_kp,good,None,flags=cv2.DrawMatchesFlags_DEFAULT)
-    cv2.imwrite('Data Preprocessing/akaze_invariant_check/rotatematch_akaze.jpg',rotate_match)
+    # good = []
+    # for m,n in matches:
+    #     if m.distance < 0.75*n.distance:
+    #         good.append([m])
+    # rotate_match = cv2.drawMatchesKnn(gray,kp,rotated_gray,gray_rotate_kp,good,None,flags=cv2.DrawMatchesFlags_DEFAULT)
+    # cv2.imwrite('Data Preprocessing/akaze_invariant_check/rotatematch_akaze.jpg',rotate_match)
 
-    gray_cropped_image = gray[50:320, 110:370]
-    # cv2.imshow("cropped", cropped_image)
-    # cv2.waitKey(0)
-    crop_kp, crop_des = akaze.detectAndCompute(gray_cropped_image, None)
+    # gray_cropped_image = gray[50:320, 110:370]
+    # # cv2.imshow("cropped", cropped_image)
+    # # cv2.waitKey(0)
+    # crop_kp, crop_des = akaze.detectAndCompute(gray_cropped_image, None)
 
-    matches = bf.knnMatch(des,crop_des,k=2)
+    # matches = bf.knnMatch(des,crop_des,k=2)
 
-    good = []
-    for m,n in matches:
-        if m.distance < 0.75*n.distance:
-            good.append([m])
-    cropped_match = cv2.drawMatchesKnn(gray,kp,gray_cropped_image,crop_kp,good,None,flags=cv2.DrawMatchesFlags_DEFAULT)
-    cv2.imwrite('Data Preprocessing/akaze_invariant_check/croppedmatch_akaze.jpg',cropped_match)
+    # good = []
+    # for m,n in matches:
+    #     if m.distance < 0.75*n.distance:
+    #         good.append([m])
+    # cropped_match = cv2.drawMatchesKnn(gray,kp,gray_cropped_image,crop_kp,good,None,flags=cv2.DrawMatchesFlags_DEFAULT)
+    # cv2.imwrite('Data Preprocessing/akaze_invariant_check/croppedmatch_akaze.jpg',cropped_match)
