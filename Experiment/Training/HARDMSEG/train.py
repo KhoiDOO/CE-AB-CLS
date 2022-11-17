@@ -1,8 +1,13 @@
+from Experiment.Approach.HARDMSEG.loss import structureloss
+from Experiment.Approach.HARDMSEG.hardmseg import HarDMSEG
+from Utils.support_technique import EarlyStopping, adjust_lr, AvgMeter, clip_gradient
+from Utils.dataloader import SegDataset
 import os
 import sys
 import glob
 import argparse
 from datetime import datetime
+import argparse
 
 import torch.nn as nn
 import torch.nn.functional as F
@@ -10,15 +15,12 @@ from torch.autograd import Variable
 import numpy as np
 from torchstat import stat
 
-sys.path.append('D:/GithubCloneRepo/Stomach-Status-Classification') 
-from Utils.dataloader import SegDataset
-from Utils.support_technique import EarlyStopping, adjust_lr, AvgMeter, clip_gradient
-from Experiment.Approach.HARDMSEG.hardmseg import HarDMSEG
-from Experiment.Approach.HARDMSEG.loss import structureloss
+sys.path.append('D:/GithubCloneRepo/Stomach-Status-Classification')
+
 
 def train(train_loader, model, optimizer, epoch, test_path, patience, n_epochs):
-	pass 
-	
+	pass
+
 
 if __name__ == '__main__':
 	for x in range(3):
@@ -37,9 +39,8 @@ if __name__ == '__main__':
 	test_seg_img_files = glob.glob(test_seg_img_dir + "/*")
 	test_seg_mask_dir = test_seg_data_dir + "/Mask"
 	test_seg_mask_files = glob.glob(test_seg_mask_dir + "/*")
-
-	parser = argparse.ArgumentParser()
-    
+ parser = argparse.ArgumentParser()
+ 
     parser.add_argument('--epoch', type=int,
                         default=100, help='epoch number')
     
