@@ -293,3 +293,5 @@ Envir
 !spec/*.json
 *.h5
 !spec/*.h5
+
+Data set/aug_dl_data/
