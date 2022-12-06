@@ -1,0 +1,1 @@
+r = randperm(6);
