@@ -66,11 +66,100 @@
 	\end{abstract}
 	
 	\section{Introduction}
+	\subsection{Problem Statement}
 	
+	\subsection{Related Works}
+	\begin{table}
+		\centering
+		\begin{tabular}{ c  p{3cm}  p{3cm}  p{2.5cm}  p{3.5cm}  c }
+			\toprule
+			\textbf{Work} & \textbf{Preprocessing} & \textbf{Feature Descriptor/Extractor} & \textbf{Data set} & \textbf{Method} & \textbf{Result}\\
+			\midrule
+			\cite{7348442} & HALC \cite{halc} and Integral Image Technique  & & Owned Data& Content-based image retrieval & \\
+			\midrule
+			\cite{0779} & Yadif algorithm \cite{yadif} and CLAHE algorithm \cite{CLAHE} & Wavelet Transform & Owned Data & Support Vector Machine, Neural Network, K nearest neighbor with leave one patient out cross-validation & 0.77 (ACC)\\
+			\midrule
+			\cite{20080465} &  & histogram-based feature extraction, descriptive statistical texture measures & Anna’s Children Hospital
+			in Vienna Data set & Support Vector Machine, Bayesian Classifier, K nearest neighbor & 63.3 (TPR)\\
+			\midrule
+			\cite{2212440} &  & Gabor filters and auto-correlation homogeneous	texture & Chromoendoscopy & Support Vector Machine, Bayesian Classifier, K nearest neighbor & 0.88 (ACC)\\
+			\midrule
+			\cite{5649638} & HSI space, and YCbCr space image & Wavelet-based LBP texture & Wireless Capsule Endoscopy & Support Vector Machine, Bayesian Classifier, K nearest neighbor & 0.88 (ACC)\\
+			\midrule
+			\cite{1336–1342} & YCbCr color space & Local Binary Pattern (LBP) & Wireless Capsule Endoscopy & Support Vector Machine, Multi-layer Perceptron & 92.37 (ACC)\\
+			\bottomrule
+		\end{tabular}
+	\caption{Related works summary table}
+	\label{tab:relatedwork}
+	\end{table}
+	There have been many pieces of research using feature descriptors over the last decade. Hirokazu et al proposed a method of retrieving multi-scale objects from optical colonoscopy images based on image recognition techniques \cite{7348442}. The proposed method is a method of content-based image retrieval (CBIR). \cite{7348442} improves the geometric feature extraction component in order to handle the retrieval of multi-scale objects	by utilizing the integral image technique \cite{207-212}. In this research, both object size and	object color are considered points of contrast, because the illumination conditions for each image are a function of the focal distance. For preprocessing, we adopt the saturation element converted from the original colonoscopy images for the	RGB color space. In addition, bright blobs within colonic	images are interpolated by a method of image inpainting \cite{25-36}
+	prior to conversion, because the saturation element cannot be
+	converted from bright blobs. In this study, a feature extraction method formed by the combination of HALC \cite{halc} and Integral Image Technique \cite{25-36} are proposed. 
+	
+	Using the same technique, Sergio et al proposed e a minimally invasive technique based on multispectral imaging and a methodology to identify malignancies in the stomach \cite{0779}. First, in order to collect the image, the authors decide to create a new gastro-endoscopic system that uses six different wavelengths including 440, 480, 520, 560, 600, and 640nm. The sequence of the monoband images is extracted from the gastroendoscopic video deinterlaced by Yadif algorithm \cite{yadif}. Then, the captured image at each wavelength is extracted semiautomatically. Second, these monoband images need to be put into a registration process due to the shifting of observed tissue. Before applying for image registration, an image contrast enhancement is used to improve the quality of the image by using CLAHE algorithm \cite{CLAHE}. Then, hierarchical motion-based estimation is used \cite{237–252} for the registration. Third, the image is extracted and filtered by using t-distribution. Finally, the image data is fed into three models including the K-nearest-neighbor classifier (k-NN), Support vector machine classifier (SVM), and neural networks using generalized relevance learning vector quantization (NN). In order to evaluate the performance of each classifier leave one patient out cross-validation (LOPOCV) is applied. The Support Vector Machine, Neural Network, and k-NN achieved an accuracy of 0.77, 0.72, 0.62, sensitivity of 0.91, 0.85, 0.61, and Specificity of 0.62, 0.59, and 0.63, respectively.
+	
+	Statistics calculated from the image’s histogram are also widely used
+	for the representation of color features. The histogram features of
+	endoscopic images are used for representing the texture of images and
+	combined with wavelet-based texture features to classify frames with
+	celiac disease \cite{20080465}. T. F. A. et al uses histogram-based feature extraction which includes three methods:  1-dimensional single color channel histograms, 2-dimensional Co-occurrence histograms, and a 3-dimensional color histogram combining information from all three color channels. Otherwise, a feature vector consisting of 10 descriptive statistical texture measures of the intensity distributions is also proposed. 5 first-order measures (Mean, Variance, Standard Deviation, Skewness, Kurtosis) were determined from each of the 1-dimensional color-channel histograms, and 5 second-order measures (Entropy, Energy, Inverse Difference Moment, Contrast, Covariance as defined in \cite{786–804}) calculated from the corresponding co-occurrence histograms. Wavelet-based feature extraction otherwise is also applied for feature extraction. Three methods include features based on Pyramidal wavelet decomposition, Best-Basis decomposition, and Local Discriminant Bases \cite{wavelet}.
+	
+	Gabor filters can be used for the multi-resolution analysis of gastric
+	images and rotation-invariant texture descriptors extracted by exploiting
+	the auto-correlation property of Gabor filters (GF). Moreover, Naïve Bayes
+	(NB) and SVM classifiers used for classification \cite{2212440}. Farhan et al proposed a novel feature based on GF which is invariant to rotation, scaling, and illumination. The invariance properties of GF are theoretically explained.  A region-based descriptor (auto-correlation homogeneous	texture—AHT), otherwise, is also proposed. For classification, novel AGF texture features in a classification framework that is based on textons: texton-AGF is used. After conducting the experiment, AHT takes the highest position in classifying Chromoendoscopy images while Texon-AGF hits a peak of 0.88 accuracies, 0.05 false positive, 0.872 precision, 0.875 recall, and 0.945 AUC.
+	
+	On the other hand, Wavelet-based LBP texture obtained from WCE images for detection of cancer frames \cite{5649638}. Baopu et al proposed a method that classifies Tumors in Capsule Endoscopy (CE) images using SVM-based Feature Selection. In the feature extraction phase, two main methods are proposed including Local binary pattern (LBP) texture operator and discrete wavelet transform (DWT). Otherwise,  feature extraction methods in RGB space, HSI space, and YCbCr space are also proposed to gain more feature information for further analysis. Then the feature representation of the CE image is the combination of features extracted from the three-color space. For the classification task, the authors used the Support Vector Machine (SVM). Another research that used Wavelet-based LBP texture for Wireless Capsule Endoscopy is \cite{5354726}. 
+	
+	Similarly, the color wavelet covariance computed for texture
+	representation of WCE images in \cite{1336–1342}. B. Li et al proposed a method of using a curve wavelet instead of the traditional wavelet transform. Local Binary Pattern (LBP), otherwise is also applied for feature extraction. The Wireless Capsule Endoscopy images, on the other hand, are transformed into YCbCr color space which is a color space widely used in video and digital photography systems in order to gather further information for analysis. Finally, Multi-layer Perceptron and Support Vector Machine algorithms are applied for the classification task.
+	
+	Pit patterns of mucosal surface	analyzed by computing Gabor wavelet and dual-tree complex wavelet transforms for the detection of cancer are discussed in \cite{10044-008-0136-8}. Each image of the database is decomposed by the Gabor	wavelet transform (GWT) \cite{99–104} and Kingsbury’s dual-tree complex wavelet transform (DT-CWT) \cite{dt-cwt}. Before actually transforming the images, image-quality-enhancing pre-processing procedures are also applied. First CLAHE \cite{CLAHE} with $8 \times 8$ tiles and a uniform distribution is applied for constructing the contrast transfer function. Second, a Gaussian blur with $r = 0.5$ using a $3 \times 3$ mask is applied. Finally, the Leave only one cross-validation (LOOCV) strategy is applied to the classification tasks.
+	
+	A completely different approach is presented in \cite{99–104}, \cite{159–164},	where the authors compute a set of texture descriptors from the outputs of the discrete cosine transform (DCT) and the
+	discrete Fourier transform (DFT). Features are either
+	computed from non-overlapping pixel blocks in the DCT
+	domain or from adaptively sized rings in the Fourier
+	domain. Concatenation of the feature vectors of each color
+	channel is then used to incorporate color information. The
+	authors employ a Bayes normal classifier together with
+	feature subset selection to classify the endoscopy images.
+	The best reported LOOCV accuracy in the two-class problem is 97.7 and 86.36 in the six-class problem.
+	
+	Gray-level and global texture features are extracted for the early
+	detection of carcinoma from endoscopy frames by using a higher-order
+	graph matching kernel SVM classifier in \cite{1336–1342}. Zhihong et al proposed a method of representing texture features of early esophageal carcinoma in Endoscopic ultrasonography (EUS) images as a graph by
+	expressing pixels as nodes and similarity between the gray-level or local features. Then, similarity measurements such as a high-order graph matching kernel can be constructed so as to provide an objective quantification of the properties of the texture features of early esophageal carcinoma in EUS images. First, the Region of Interest (ROI) is extracted from each image, then an h-layer graph representation is created from each ROI where nodes are found by SIFT Algorithm \cite{sift}. Second, a first-order feature point matching is conducted as a course of matching results. These results are refined by higher-order graph matching. Finally, a kernel computation based on high-order graph matching results is conducted and plays as a kernel of the Support Vector Machine (SVM) classifier. Overall, the new kernel SVM achieved an accuracy of 0.93. 
+	
+	Similarly, the GLCM with a fusion of color features is extracted from endoscopic frames in \cite{1793-8163} for the detection of stomach gastritis and used SVM for training and classification of endoscopic frames. Before classifying, image enhancement, image cropping, and color conversion are applied for the pre-processing procedure. In feature extraction, two-level DWT is used before applying Gray Level Co-occurrence Matrix (GLCM) to calculate six features (contrast, correlation,
+	dissimilarity, angular second moment, entropy, and inverse
+	different moment). Then the feature is fed into SVM with various kernels for the classification task. In the end, the method of using the combination wavelet transform, Gray Level Co-occurrence Matrix, and Color Moment hits a peak of 0.87 accuracies.
+	
+	GLCM texture features combined with	temporal features in \cite{11769} for retrieval of images with similar clinical conditions from gastric images database. Color co-occurrence can compute the color-texture features from the wireless capsule endoscopy (WCE) image for bleeding detection by assuming the blood has a texture. In this research, Barbara et al proposed a method of using SIFT algorithm, a scale-invariant feature descriptor to extract interest points from WCE images. Then the GLCM and K Mean Clustering are applied to find K visual words in Bag-of-Visual-Word (BVW) method. Finally, K-nearest Neighbor is applied for the classification task. The KNN classifier whose number of neighbors is 10 outperforms all other methods with an accuracy of 0.76.
+	
+	Moreover, the dominant color features are computed from hue, saturation,
+	and value (HSV) frequency of images \cite{4650282}. In this research, Balathasan proposed a method of blood detection from capsule endoscopy videos. As part of preprocessing the bounding black region in CE frames is removed, which is outside the field of view of the camera. Then an averaging filter was used to remove random noise, which was present in some of the videos. And finally, frames that are poorly illuminated	or over-exposed are removed as these frames do not provide any useful information. The second feature extracted from images is the dominant color using the dominant color descriptor \cite{703–715}. A third image feature extracted is the co-occurrence of the dominant colors. For the co-occurrence matrix, the cooccurrence for a window of 5×5, for the top 8 dominant colors was computed. The top 8 dominant colors were picked from the positive frames in the training set. Finally, the Support Vector Machine (SVM) is used for classification. 
+	
+	In the same way, LBP texture with the color histogram features is used to classify the endoscopy frames having cancerous regions in \cite{5212217}. SU et al proposed a method of abnormal region detection in gastroscopic images. For feature extraction of the gastroscopic image, the color histogram is used to represent the color feature and the uniform	Local Binary Pattern (LBP) \cite{LBP} histograms to represent the structural (textural) feature of gastroscopic images. Three kinds of regions are considered invalid regions in gastroscopic images besides the non-imaging region: the dark region, the text-stained region, and the specular reflectance region. The dark region cannot provide reliable information which is defined as the region with intensity less than a threshold (40 in this paper). The text-stained regions can be simply removed by a predefined mask since the positions of texts are fixed. the reflection regions can be enhanced by multiplying intensity with the saturation stated in \cite{5212217}. For abnormal region detection tasks, boosted decision stump is used with a modified GentleBoost algorithm \cite{GentleBoost}.
+	
+	In \cite{103733}, two new approaches to GLCM are proposed including Deep Gray-Level Co-occurrence Matrix (DeepGLCM) and Local-Gray-Level Co-occurrence Matrix (L-GLCM). Instead of using the whole image and feeding into the AlexNet, the statistical feature including Energy, Homogeneity, Contrast, and Correlation computed from GLCM is used. In this research, the Kvasir data set is used, which includes 7 classes: Esophagitis, Dyed and Lifted Polyp, Dyed Resection Margin, Cecum, Polyrus, Z-line, Polyps, and Ulcerative colitis. For the whole process, AlexNet is used for
+	feature extraction, then the feature extracted is put into GLCM to calculate statistical features. Finally, SVM is used for the classification task.
+	\subsection{Proposed Method}
+	\section{Material and Methods}
+	\subsection{Materials}
+	\subsection{Methodology}
+	\section{Results}
+	\subsection{Experiment Setup}
+	\subsection{Discussion}
 	
 	%Biliography Rendering
 	\bibliographystyle{ieeetr} 
 	\bibliography{ref} 
 	
 	%Appendix Starting
-	\appendix
+	\appendix
+
+\end{document}
+
+
+

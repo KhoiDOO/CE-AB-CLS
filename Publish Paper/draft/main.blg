@@ -5,44 +5,129 @@ Reallocating 'name_of_file' (item size: 1) to 7 items.
 The style file: ieeetr.bst
 Reallocating 'name_of_file' (item size: 1) to 4 items.
 Database file #1: ref.bib
-You've used 4 entries,
+Repeated entry---line 243 of file ref.bib
+ : @article{5354726
+ :                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 341 of file ref.bib
+ : @article{1336–1342
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 449 of file ref.bib
+ : @article{703–715
+ :                   ,
+I'm skipping whatever remains of this entry
+Too many commas in name 1 of "Sergio E. Martinez-Herrera, Yannick Benezeth, Matthieu Boffety, Jean-François Emile, Franck Marzani, Dominique Lamarque, François Goudail1" for entry 0779
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Sergio E. Martinez-Herrera, Yannick Benezeth, Matthieu Boffety, Jean-François Emile, Franck Marzani, Dominique Lamarque, François Goudail1" for entry 0779
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Sergio E. Martinez-Herrera, Yannick Benezeth, Matthieu Boffety, Jean-François Emile, Franck Marzani, Dominique Lamarque, François Goudail1" for entry 0779
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Sergio E. Martinez-Herrera, Yannick Benezeth, Matthieu Boffety, Jean-François Emile, Franck Marzani, Dominique Lamarque, François Goudail1" for entry 0779
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Hegenbart, S., Uhl, A., Wimmer, G., Vecsei, A" for entry yadif
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Hegenbart, S., Uhl, A., Wimmer, G., Vecsei, A" for entry yadif
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Hegenbart, S., Uhl, A., Wimmer, G., Vecsei, A" for entry yadif
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Hegenbart, S., Uhl, A., Wimmer, G., Vecsei, A" for entry yadif
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Hegenbart, S., Uhl, A., Wimmer, G., Vecsei, A" for entry yadif
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Bergen, J., Anandan, P., Hanna, K., Hingorani, R." for entry 237–252
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Bergen, J., Anandan, P., Hanna, K., Hingorani, R." for entry 237–252
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Bergen, J., Anandan, P., Hanna, K., Hingorani, R." for entry 237–252
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Bergen, J., Anandan, P., Hanna, K., Hingorani, R." for entry 237–252
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Bergen, J., Anandan, P., Hanna, K., Hingorani, R." for entry 237–252
+while executing---line 969 of file ieeetr.bst
+Name 1 in "A. V´ecsei1 , T. Fuhrmann2 , and A. Uhl2" has a comma at the end for entry 20080465
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Michael Hafner, Roland Kwitt, Andreas Uhl, Alfred Gangl, Friedrich Wrba, Andreas Ve´csei" for entry 10044-008-0136-8
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Michael Hafner, Roland Kwitt, Andreas Uhl, Alfred Gangl, Friedrich Wrba, Andreas Ve´csei" for entry 10044-008-0136-8
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Michael Hafner, Roland Kwitt, Andreas Uhl, Alfred Gangl, Friedrich Wrba, Andreas Ve´csei" for entry 10044-008-0136-8
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Ha¨fner M, Brunauer L, Payer H, Resch R, Wrba F, Gangl A, Ve´csei A, Uhl A" for entry 159–164
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Ha¨fner M, Brunauer L, Payer H, Resch R, Wrba F, Gangl A, Ve´csei A, Uhl A" for entry 159–164
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Ha¨fner M, Brunauer L, Payer H, Resch R, Wrba F, Gangl A, Ve´csei A, Uhl A" for entry 159–164
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Ha¨fner M, Brunauer L, Payer H, Resch R, Wrba F, Gangl A, Ve´csei A, Uhl A" for entry 159–164
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Ha¨fner M, Brunauer L, Payer H, Resch R, Wrba F, Gangl A, Ve´csei A, Uhl A" for entry 159–164
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Zhihong Zhang, Lu Bai, Peng Ren, Edwin R. Hancock4" for entry sift
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Barbara André, Tom Vercauteren, Aymeric Perchant, Anna M. Buchner, Michael B. Wallace & Nicholas Ayache" for entry 11769
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Barbara André, Tom Vercauteren, Aymeric Perchant, Anna M. Buchner, Michael B. Wallace & Nicholas Ayache" for entry 11769
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Balathasan Giritharan, Xiaohui Yuan, Jianguo Liu, Bill Buckles, JungHwan Oh, Shou Jiang Tang" for entry 4650282
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Balathasan Giritharan, Xiaohui Yuan, Jianguo Liu, Bill Buckles, JungHwan Oh, Shou Jiang Tang" for entry 4650282
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Balathasan Giritharan, Xiaohui Yuan, Jianguo Liu, Bill Buckles, JungHwan Oh, Shou Jiang Tang" for entry 4650282
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Balathasan Giritharan, Xiaohui Yuan, Jianguo Liu, Bill Buckles, JungHwan Oh, Shou Jiang Tang" for entry 703–715
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Balathasan Giritharan, Xiaohui Yuan, Jianguo Liu, Bill Buckles, JungHwan Oh, Shou Jiang Tang" for entry 703–715
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Balathasan Giritharan, Xiaohui Yuan, Jianguo Liu, Bill Buckles, JungHwan Oh, Shou Jiang Tang" for entry 703–715
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "SU ZHANG , WEI YANG , YI-LUN WU , RUI YAO , SHI-DAN CHENG" for entry 5212217
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "SU ZHANG , WEI YANG , YI-LUN WU , RUI YAO , SHI-DAN CHENG" for entry 5212217
+while executing---line 969 of file ieeetr.bst
+Name 1 in "J. Friedman, T. Hastie, and R. Tibshirani" has a comma at the end for entry GentleBoost
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "Hussam Ali, Muhammad Sharif , Mussarat Yasmin , Mubashir Husain Rehmani" for entry 103733
+while executing---line 969 of file ieeetr.bst
+You've used 28 entries,
             1876 wiz_defined-function locations,
-            499 strings with 4069 characters,
-and the built_in function-call counts, 582 in all, are:
-= -- 46
-> -- 24
+            605 strings with 7891 characters,
+and the built_in function-call counts, 3800 in all, are:
+= -- 314
+> -- 136
 < -- 0
-+ -- 10
-- -- 6
-* -- 34
-:= -- 105
-add.period$ -- 4
-call.type$ -- 4
-change.case$ -- 4
++ -- 62
+- -- 34
+* -- 210
+:= -- 647
+add.period$ -- 28
+call.type$ -- 28
+change.case$ -- 28
 chr.to.int$ -- 0
-cite$ -- 4
-duplicate$ -- 36
-empty$ -- 69
-format.name$ -- 6
-if$ -- 133
+cite$ -- 28
+duplicate$ -- 252
+empty$ -- 477
+format.name$ -- 34
+if$ -- 893
 int.to.chr$ -- 0
-int.to.str$ -- 4
-missing$ -- 4
-newline$ -- 15
-num.names$ -- 4
-pop$ -- 16
+int.to.str$ -- 28
+missing$ -- 28
+newline$ -- 87
+num.names$ -- 28
+pop$ -- 112
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 6
+skip$ -- 33
 stack$ -- 0
 substring$ -- 0
-swap$ -- 4
+swap$ -- 28
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 4
-width$ -- 5
-write$ -- 34
+while$ -- 28
+width$ -- 30
+write$ -- 226
+(There were 39 error messages)

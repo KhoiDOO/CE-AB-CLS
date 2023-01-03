@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{7348442}
 E.~T. Hirokazu~Nosato, Hidenori~Sakanashi and M.~Murakawa, ``Method of
@@ -17,5 +17,116 @@ A.~Telea, ``An image inpainting technique based on the fast marching method,''
 \bibitem{halc}
 N.~Otsu and T.~Kurita, ``A new scheme for practical flexible and intelligent
   vision systems,'' {\em ” Proc. of IAPR Workshop on Computer Vision}, 1988.
+
+\bibitem{0779}
+M.~B. J.-F. E. F. M. D. L. F.~G. Sergio E. Martinez-Herrera, Yannick~Benezeth,
+  ``Identification of precancerous lesions by multispectral gastroendoscopy,''
+  {\em SIViP}, 2015.
+
+\bibitem{yadif}
+U.-A. W. G. V.~A. Hegenbart, S., ``On the effects of de-interlacing on the
+  classification accuracy of interlaced endoscopic videos with indication for
+  celiac disease,'' {\em IEEE}, 2013.
+
+\bibitem{CLAHE}
+K.~Zuiderveld, ``Contrast limited adaptive histograph equalization,'' {\em
+  Graphic Gems IV}, 1994.
+
+\bibitem{237–252}
+A.-P. H. K. H.~R. Bergen, J., ``Hierarchical model-based motion estimation,''
+  {\em Computer Science}, 1992.
+
+\bibitem{20080465}
+T.~F. A.~V´ecsei1 and A.~Uhl2, ``Towards automated diagnosis of celiac disease
+  by computer-assisted classification of duodenal imagery,'' {\em International
+  Conference on Advances in Medical, Signal and Information Processing}, 2008.
+
+\bibitem{786–804}
+R.~M. Haralick., ``Statistical and structural approaches to texture.,'' {\em
+  Proceedings of the IEEE}, 1979.
+
+\bibitem{wavelet}
+M.~Wickerhauser., ``Adapted wavelet analysis from theory to software,'' {\em
+  Wellesley}, 1994.
+
+\bibitem{2212440}
+F.~R. F. B. S. M. D. R. M.~T. Coimbra, ``Invariant gabor texture descriptors
+  for classification of gastroenterology images,'' {\em IEEE Xplore}, 2021.
+
+\bibitem{5649638}
+B.~L. M. Q.-H. Meng, ``Tumor ce image classification using svm-based feature
+  selection,'' {\em IEEE Xplore}, 2010.
+
+\bibitem{5354726}
+B.~L. M. Q.-H. Meng, ``Small bowel tumor detection for wireless capsule
+  endoscopy images using textural features and support vector machine,'' {\em
+  IEEE Xplore}, 2009.
+
+\bibitem{1336–1342}
+M.-H.~M. B.~Li, ``Texture analysis for ulcer detection in capsule endoscopy
+  images,'' {\em Image and Vision Computing 27}, 2009.
+
+\bibitem{10044-008-0136-8}
+A.~U. A. G. F. W. A.~V. Michael~Hafner, Roland~Kwitt, ``Feature extraction from
+  multi-directional multi-resolution image transformations for the
+  classification of zoom-endoscopy images,'' {\em Elsevier}, 2009.
+
+\bibitem{99–104}
+M.~BS and M.~WY, ``Texture features for browsing and retrieval of image
+  data.,'' {\em IEEE Trans Pattern Anal Mach Intell}, 1996.
+
+\bibitem{dt-cwt}
+K.~N, ``The dual-tree complex wavelet transform: a new technique for
+  shift-invariance and directional filters.,'' {\em Proceedings of the 8th IEEE
+  DSP Workshop}, 1998.
+
+\bibitem{159–164}
+P.~H. R. R. W. F. G. A. V. A. U.~A. Ha¨fner~M, Brunauer~L, ``Feature
+  extraction from multi-directional multi-resolution image transformations for
+  the classification of zoom-endoscopy images,'' {\em IEEE International
+  Symposium on Computer-Based Medical Systems}, 2007.
+
+\bibitem{sift}
+P.~R. E. R.~H. Zhihong~Zhang, Lu~Bai, ``Distinctive image features from
+  scale-invariant key points,'' {\em Int J Comput Vis}, 2008.
+
+\bibitem{1793-8163}
+Z.~Sobri and H.~A.~M. Sakim, ``Texture color fusion based features extraction
+  for endoscopic gastritis images classification,'' {\em International Journal
+  of Computer and Electrical Engineering}, 2012.
+
+\bibitem{11769}
+A.~P. A. M. B. M. B. W. . N.~A. Barbara~André, Tom~Vercauteren, ``Introducing
+  space and time in local feature-based endomicroscopic image retrieval,'' {\em
+  MICCAI International Workshop on Medical Content-Based Retrieval for Clinical
+  Decision Support}, 2009.
+
+\bibitem{4650282}
+J.~L. B. B. J. O. S. J.~T. Balathasan~Giritharan, Xiaohui~Yuan, ``Bleeding
+  detection from capsule endoscopy videos,'' {\em 30th Annual International
+  IEEE EMBS Conference}, 2008.
+
+\bibitem{703–715}
+J.~L. B. B. J. O. S. J.~T. Balathasan~Giritharan, Xiaohui~Yuan, ``Circuits and
+  systems for video technology,'' {\em IEEE Transactions}, 2001.
+
+\bibitem{5212217}
+Y.-L. W. R. Y. S.-D.~C. SU~ZHANG, WEI~YANG, ``Abnormal region detection in
+  gastroscopic images by combining classifiers on neighboring patches,'' {\em
+  Proceedings of the Eighth International Conference on Machine Learning and
+  Cybernetics}, 2009.
+
+\bibitem{LBP}
+A.~A.~S. Zidonghua~Xuebao, ``Research and perspective on local binary
+  pattern,'' {\em Elsevier}, 2013.
+
+\bibitem{GentleBoost}
+T.~H. J.~Friedman and R.~Tibshirani, ``Additive logistic regression: A
+  statistical view of boosting,'' {\em Annals of Statistics}, 2000.
+
+\bibitem{103733}
+M.~Y. M. H.~R. Hussam~Ali, Muhammad~Sharif, ``A shallow extraction of texture
+  features for classification of abnormal video endoscopy frames,'' {\em
+  Biomedical Signal Processing and Control}, 2022.
 
 \end{thebibliography}
