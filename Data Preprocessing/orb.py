@@ -112,17 +112,19 @@ if __name__ == '__main__':
     #             target_path=opt.target_sift_json_test_file,
     #             nfeatures = 1000)
 
-    orb_extract(data_file_path=opt.ori_train_files, 
-                target_path=opt.target_sift_json_train_file,
-                nfeatures = 10000, scaleFactor = 2)
-    orb_extract(data_file_path=opt.ori_test_files, 
-                target_path=opt.target_sift_json_test_file,
-                nfeatures = 10000, scaleFactor = 2)
+    # orb_extract(data_file_path=opt.ori_train_files, 
+    #             target_path=opt.target_sift_json_train_file,
+    #             nfeatures = 10000, scaleFactor = 2)
+    # orb_extract(data_file_path=opt.ori_test_files, 
+    #             target_path=opt.target_sift_json_test_file,
+    #             nfeatures = 10000, scaleFactor = 2)
     
-    # img = cv2.imread(opt.ori_train_files[100])
-    # gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-    # orb = cv2.ORB_create(nfeatures = 10000, scaleFactor=2)
-    # kp, des = orb.detectAndCompute(gray,None)
+    img = cv2.imread(opt.ori_train_files[100])
+    gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    orb = cv2.ORB_create(nfeatures = 10000, scaleFactor=2)
+    kp, des = orb.detectAndCompute(gray,None)
+    img_keys=cv2.drawKeypoints(gray,kp,img,flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+    cv2.imwrite('Data Preprocessing/orb_invariant_check/orb_keypoints.jpg', img_keys)    
 
     # scale_percent = 60 
     # width = int(img.shape[1] * scale_percent / 100)
